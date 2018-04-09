@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/miracle0930/chatApp#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "socket.io": "^2.1.0"
   }
 }
