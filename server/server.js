@@ -13,17 +13,14 @@ app.use(express.static(publicPath))
 
 io.on('connection', (socket) => {
     console.log('New user connected')
-
-    socket.on('chatMessage', (message) => {
-        console.log('chatMessage', message)
+    socket.on('createMessage', (message, callBack) => {
+        console.log('createMessage', message)
         // broadcast to all users on the server, including self
         io.emit('newMessage', generateMessage(message.from, message.text))
         // broadcast to all users on the server, excluding self
-        socket.broadcast.emit('newMessage', generateMessage(message.from, message.text))
-    })
-
-    socket.on('createEmail', (newEmail) => {
-        console.log('createEmail', newEmail)
+        // socket.broadcast.emit('newMessage', generateMessage(message.from, message.text))
+        callBack(message)
+        // function2(message)
     })
 
     socket.on('disconnect', () => {
